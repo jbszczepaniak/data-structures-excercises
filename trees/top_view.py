@@ -5,6 +5,11 @@ class Node:
         self.right = None
 
 def top_view(root, hash_map={}, horizontal_distance=0, vertical_distance=0):
+    '''
+    Task is inspired by https://www.hackerrank.com/challenges/tree-top-view/
+    However solution provided here is more versatile, because it's general,
+    it is mentioned in this editorial https://www.hackerrank.com/challenges/tree-top-view/editorial
+    '''
     if not root:
         return
 
