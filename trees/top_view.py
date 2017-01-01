@@ -1,8 +1,4 @@
-class Node:
-    def __init__(self, key):
-        self.data = key
-        self.left = None
-        self.right = None
+from node import Node
 
 def top_view(root, hash_map={}, horizontal_distance=0, vertical_distance=0):
     '''

@@ -1,5 +1,5 @@
 import unittest
-from top_view import Node
+from node import Node
 from top_view import top_view
 
 class TestTopView(unittest.TestCase):
