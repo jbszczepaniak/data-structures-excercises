@@ -24,15 +24,40 @@ class AVLTree(object):
             root.right = self.rec_insert(data, root.right)
         return root
 
-    def in_order(self):
+    def in_order(self, callback):
         result = []
-        for value in self.rec_in_order(self.root):
-            result.append(value)
+        for node in self.rec_in_order(self.root):
+            result.append(callback(node))
         return result
 
     def rec_in_order(self, root):
         if root.left:
             yield from self.rec_in_order(root.left)
-        yield root.data
+        yield root
         if root.right:
             yield from self.rec_in_order(root.right)
+
+    def height(self, node):
+        left_height = 0
+        right_height = 0
+
+        if node.left:
+            left_height = 1 + self.height(node.left)
+
+        if node.right:
+            right_height = 1 + self.height(node.right)
+
+        return max(left_height, right_height)
+
+    def recalculate_balances(self, node):
+        left_height = 0
+        right_height = 0
+
+        if node.left:
+            left_height = 1 + self.recalculate_balances(node.left)
+
+        if node.right:
+            right_height = 1 + self.recalculate_balances(node.right)
+
+        node.bal_coeff = left_height - right_height
+        return max(left_height, right_height)
