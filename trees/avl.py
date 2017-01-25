@@ -61,3 +61,15 @@ class AVLTree(object):
 
         node.bal_coeff = left_height - right_height
         return max(left_height, right_height)
+
+    def rotate_right(self, node):
+        pass
+
+    def rotate_left(self, node):
+        pass
+
+    def rotaate_right_left(self, node):
+        pass
+
+    def rotate_right_left(self, node)
+        pass
