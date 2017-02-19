@@ -5,5 +5,6 @@ class Node(object):
 
 def print_list(root):
     if root:
-        print(root.data)
+        print("{}".format(root.data),end=" ")
         print_list(root.next)
+
