@@ -2,8 +2,10 @@ from node import Node
 
 def remove(root, data):
   if root.data > data:
-    return remove(root.left, data)
-  elif root.data < data:
-    return remove(root.right, data)
-  else:
+    root.left = remove(root.left, data)
     return root
+  elif root.data < data:
+    root.right = remove(root.right, data)
+    return root
+  else:
+    return None

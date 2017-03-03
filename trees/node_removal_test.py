@@ -14,8 +14,8 @@ class TestNodeRemoval(unittest.TestCase):
 
   def test_remove_leaf(self):
     self.tree = remove(self.tree, 25)
-    print(self.tree.data)
-    # self.assertTrue(self.tree.right.right.left == None)
+    # print(self.tree.data)
+    self.assertTrue(self.tree.right.right.left == None)
 
 if __name__ == '__main__':
   unittest.main()
