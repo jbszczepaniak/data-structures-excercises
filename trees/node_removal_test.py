@@ -8,13 +8,13 @@ class TestNodeRemoval(unittest.TestCase):
     self.tree.right = Node(20)
     self.tree.left = Node(10)
     self.tree.right.right = Node(30)
-    self.tree.rightleft = Node(18)
+    self.tree.right.left = Node(18)
     self.tree.right.right.right = Node(35)
     self.tree.right.right.left = Node(25)
 
   def test_remove_leaf(self):
     self.tree = remove(self.tree, 25)
-    print(self.tree)
+    print(self.tree.data)
     # self.assertTrue(self.tree.right.right.left == None)
 
 if __name__ == '__main__':
