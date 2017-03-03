@@ -1,6 +1,6 @@
 import unittest
 from node import Node
-from node_removal import remove
+from node_removal import remove, min_node
 
 class TestNodeRemoval(unittest.TestCase):
   def setUp(self):
@@ -32,5 +32,12 @@ class TestNodeRemoval(unittest.TestCase):
   def test_remove_node_with_right_child(self):
     self.tree = remove(self.tree, 11)
     self.assertTrue(self.tree.left.right.data == 12)
+
+  def test_remove_node_with_both_children(self):
+    self.tree = remove(self.tree, 30)
+    self.assertTrue(self.tree.right.right.left.data == 25)
+    self.assertTrue(self.tree.right.right.data == 35)
+
+
 if __name__ == '__main__':
   unittest.main()
