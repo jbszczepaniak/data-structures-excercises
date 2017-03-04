@@ -13,25 +13,13 @@ class AVLNode():
         self.left = None
 
     def update_height(self):
-        root.height = max([root.left_sub_height, root.right_sub_height])
+        self.height = max([self.left_sub_height, self.right_sub_height])
 
     def update_bal_coeff(self):
-        root.bal_coeff = root.right_sub_height - root.left_sub_height
+        self.bal_coeff = self.right_sub_height - self.left_sub_height
 
-def height(root):
-    if not root:
-        return 0
-    return (max(1 + height(root.left), 1 + height(root.right)))
-
-def add_balance_coeff(root):
-    if not root:
-        return 0
-    left_height = 1 + add_balance_coeff(root.left)
-    right_height = 1 + add_balance_coeff(root.right)
-
-    print(left_height - right_height)
-    return (max(left_height, right_height))
-
+    def __str__(self):
+        return "data:{}\nheight:{}\nbal_coeff:{}\nleft_sub_tree_h:{}\nright_sub_tree_h:{}\n".format(self.data, self.height, self.bal_coeff, self.left_sub_height, self.right_sub_height)
 
 def insert_to_avl(data, root):
     if not root:
@@ -41,19 +29,18 @@ def insert_to_avl(data, root):
         root.left = insert_to_avl(data, root.left)
 
         root.left_sub_height  = root.left.height + 1 # Only this changes
-
         root.update_height()
         root.update_bal_coeff()
+        print(root)
 
-        print("data:{}, h:{}, bal_coeff:{}".format(root.data, root.height, root.bal_coeff))
     elif data >= root.data:
         root.right = insert_to_avl(data, root.right)
 
-        root.right_sub_height  = root.right.height  + 1# Only this changes
-
+        root.right_sub_height  = root.right.height  + 1 # Only this changes
         root.update_height()
         root.update_bal_coeff()
-        print("data:{}, h:{}, bal_coeff:{}".format(root.data, root.height, root.bal_coeff))
+        print(root)
+
     return root
 
 def in_order_traversal(root):
@@ -65,7 +52,7 @@ def in_order_traversal(root):
 
 if __name__ == '__main__':
     root = AVLNode(10)
-    for num in [5, 12, 15, 11]:
+    for num in [5, 12, 15, 16]:
         insert_to_avl(num, root)
 
     # add_balance_coeff(root)
