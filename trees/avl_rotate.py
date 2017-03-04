@@ -1,7 +1,3 @@
-from random import randint, seed
-
-seed(11111)
-
 class AVLNode():
     def __init__(self, data):
         self.bal_coeff = 0
@@ -30,13 +26,9 @@ def insert_to_avl(data, root):
         root.update_bal_coeff()
 
         if abs(root.bal_coeff) > 1:
-
             root = rotate(root)
 
-        # print(root)
-
     elif data >= root.data:
-        # print(data)
         root.right = insert_to_avl(data, root.right)
 
         root.update_height()
@@ -103,14 +95,13 @@ def rotate_left_right(root):
 def in_order_traversal(root):
     if root.left:
         in_order_traversal(root.left)
-    print("data:{}, h:{}, bal_coeff:{}".format(root.data, root.height, root.bal_coeff))
+    print(root)
     if root.right:
         in_order_traversal(root.right)
 
 if __name__ == '__main__':
     root = AVLNode(10)
-    for num in [5, 12, 15, 16, 17, 18 , 4, 3 ]:
+    for num in [5, 12, 15, 16, 17, 18 , 4, 3, 100, 99 ]:
         root = insert_to_avl(num, root)
 
-    in_order_traversal(root)
-    # print(root.left.left.left)
+    print(root.right.right.right)
