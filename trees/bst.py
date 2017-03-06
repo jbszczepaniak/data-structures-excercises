@@ -14,6 +14,37 @@ def insert(data, root):
         root.right = insert(data, root.right)
     return root
 
+def remove(data, root):
+    if data < root.data:
+        root.left = remove(data, root.left)
+    elif data > root.data:
+        root.right = remove(data, root.right)
+    else:
+        if (not root.left) and (not root.right):
+            return None
+
+        if (root.left) and (not root.right):
+            return root.left
+
+        if (not root.left) and (root.right):
+            return root.right
+
+        else:
+            right_sub_tree_min = bst_min_node(root.right)
+            temp_data = right_sub_tree_min.data
+            root = remove(temp_data, root)
+            root.data = temp_data
+
+    return root
+
+def bst_min_node(root):
+    if not root:
+        return
+    if root.left:
+        return bst_min_node(root.left)
+    else:
+        return root
+
 def in_order_print(root):
     if not root:
         return
